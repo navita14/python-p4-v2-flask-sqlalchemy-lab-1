@@ -4,7 +4,7 @@
 from app import app
 from models import db, Earthquake
 
-with app.app_context():
+with app.app_context(): #standalone script run by python seed.py
 
     # Delete all rows in the "earthquakes" table
     Earthquake.query.delete()
@@ -18,3 +18,6 @@ with app.app_context():
 
     # Commit the transaction
     db.session.commit()
+
+
+#ahlembic only cares about data structure not data context so delete() wont create a new version
